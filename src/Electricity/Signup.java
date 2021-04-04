@@ -1,15 +1,14 @@
- /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Electricity;
 
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.SQLException;
+//import java.sql.*;
+import java.sql.ResultSet;
+//import java.sql.SQLException;
+import java.sql.Statement;
+//import java.sql.Connection;
 
 public class Signup extends JFrame implements ActionListener{
     JPanel p1;
@@ -17,6 +16,7 @@ public class Signup extends JFrame implements ActionListener{
     //Choice c1;
     JButton b1, b2;
     Signup(){
+        super("Consumer Account Creation");
         setBounds(600, 250, 700, 400);
         
         p1 = new JPanel();
@@ -125,6 +125,7 @@ public class Signup extends JFrame implements ActionListener{
         JLabel l6 = new JLabel(i3);
         l6.setBounds(450, 30, 250, 250);
         p1.add(l6);
+        
     }
     
     public void actionPerformed(ActionEvent ae){
@@ -135,22 +136,52 @@ public class Signup extends JFrame implements ActionListener{
             String user = "Consumer";
             String meter = t4.getText();
             try{
+                int a = 0;
                 Conn c = new Conn();
+                Conn s = new Conn();
                 String str = null;
+                String sql = "select * from login";
+                Statement ST = s.s;
+                ResultSet rs = ST.executeQuery(sql);
+                while(rs.next())
+                {
+                    String metercheck = rs.getString("meter_no");
+                    if(metercheck.matches(meter))
+                    {
+                        a=1;
+                    }
+                    else
+                    {
+                        a=0;
+                    }
+                }
+                if(a==1)
+                {
+                    str = "update login set username = '"+username+"', name = '"+name+"', password = '"+password+"', user = '"+user+"' where meter_no = '"+meter+"'";
+                        c.s.executeUpdate(str);
+                        JOptionPane.showMessageDialog(null, "Account Created Successfully");
+                        this.setVisible(false);
+                        new Login().setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Account creation failed due to wrong meter number");
+                }
                 /*if(user.equals("Admin")){
                     str = "insert into login values('"+meter+"', '"+username+"', '"+name+"', '"+password+"', '"+user+"')";
-                }else{*/
-                    str = "update login set username = '"+username+"', name = '"+name+"', password = '"+password+"', user = '"+user+"' where meter_no = '"+t4.getText()+"'";
-                //}
+                }else{
+                
+                str = "update login set username = '"+username+"', name = '"+name+"', password = '"+password+"', user = '"+user+"' where meter_no = '"+meter+"'";
+                }
                 
                 c.s.executeUpdate(str);
                 JOptionPane.showMessageDialog(null, "Account Created Successfully");
                 this.setVisible(false);
-                new Login().setVisible(true);
-            }catch(HeadlessException | SQLException e){
-                System.err.println("SQL exception: " + e.getMessage());
+                new Login().setVisible(true);*/
+            }catch(Exception e){
+                /*System.err.println("SQL exception: " + e.getMessage());
                 System.exit(1);
-                JOptionPane.showMessageDialog(null, "Account Creation Failed");
+                JOptionPane.showMessageDialog(null, "Account Creation Failed");*/
             }
         } else if(ae.getSource()== b2){
             this.setVisible(false);

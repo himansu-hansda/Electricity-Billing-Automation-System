@@ -1,6 +1,8 @@
 package Electricity;
 
-import java.sql.*;  
+
+
+import java.sql.*; 
 
 public class Conn{
     Connection c;
