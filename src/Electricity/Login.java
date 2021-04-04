@@ -15,7 +15,7 @@ public class Login extends JFrame implements ActionListener{
     Login(){
         super("Login Page");
         setLayout(null);
-        getContentPane().setBackground(Color.WHITE);
+        getContentPane().setBackground(new Color(186,79,84));
         
         l1 = new JLabel("Username");
         l1.setBounds(300, 20, 100, 20);
@@ -65,7 +65,7 @@ public class Login extends JFrame implements ActionListener{
         b3.addActionListener(this);
 
 
-        ImageIcon ic3 = new ImageIcon(ClassLoader.getSystemResource("icon/second.jpg"));
+        ImageIcon ic3 = new ImageIcon(ClassLoader.getSystemResource("icon/iconelectro.jpg"));
         Image i3 = ic3.getImage().getScaledInstance(250, 250,Image.SCALE_DEFAULT);
         ImageIcon icc3 = new ImageIcon(i3);
         l3 = new JLabel(icc3);
@@ -75,7 +75,7 @@ public class Login extends JFrame implements ActionListener{
         setLayout(new BorderLayout());
     
      
-        setSize(640,300);
+        setSize(640,280);
         setLocation(600,300);
         setVisible(true);
         
