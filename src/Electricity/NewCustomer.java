@@ -20,7 +20,7 @@ public class NewCustomer extends JFrame implements ActionListener{
         p.setBackground(Color.WHITE);
         p.setBackground(new Color(173,216,230));
         
-        JLabel title = new JLabel("New Customer");
+        JLabel title = new JLabel("New Consumer");
         title.setBounds(180, 10, 200, 26);
         title.setFont(new Font("Tahoma", Font.PLAIN, 24));
         p.add(title);

@@ -9,6 +9,6 @@ package Electricity;
  *
  * @author Himansu Hansda
  */
-public class EmployeeManagement {
+public class EnterConsumerComplaints {
     
 }
