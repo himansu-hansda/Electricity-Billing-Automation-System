@@ -5,25 +5,30 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
-public class ViewConsumerComplaints extends JFrame implements ActionListener{
+public class ViewEmployeeDetails extends JFrame implements ActionListener{
  
     JTable t1;
     JButton b1;
-    String x[] = {"Customer Name","Complain"};
-    String y[][] = new String[40][200];
+    String x[] = {"Customer Name","Meter Number","Address","City","State","Email","Phone"};
+    String y[][] = new String[40][8];
     int i=0, j=0;
-    ViewConsumerComplaints(){
-        super("Consumer Complaints");
+    ViewEmployeeDetails(){
+        super("Employee Details");
         setSize(1200,650);
         setLocation(400,150);
         
         try{
             Conn c1  = new Conn();
-            String s1 = "select * from complaint";
+            String s1 = "select * from employee";
             ResultSet rs  = c1.s.executeQuery(s1);
             while(rs.next()){
                 y[i][j++]=rs.getString("name");
-                y[i][j++]=rs.getString("comlaint");
+                y[i][j++]=rs.getString("salary");
+                y[i][j++]=rs.getString("address");
+                y[i][j++]=rs.getString("city");
+                y[i][j++]=rs.getString("state");
+                y[i][j++]=rs.getString("email");
+                y[i][j++]=rs.getString("phone");
                 i++;
                 j=0;
             }
@@ -47,7 +52,7 @@ public class ViewConsumerComplaints extends JFrame implements ActionListener{
     }
     
     public static void main(String[] args){
-        new ViewConsumerComplaints().setVisible(true);
+        new ViewEmployeeDetails().setVisible(true);
     }
     
 }

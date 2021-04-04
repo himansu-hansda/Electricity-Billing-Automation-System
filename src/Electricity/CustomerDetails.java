@@ -13,7 +13,7 @@ public class CustomerDetails extends JFrame implements ActionListener{
     String y[][] = new String[40][8];
     int i=0, j=0;
     CustomerDetails(){
-        super("Customer Details");
+        super("Consumer Details");
         setSize(1200,650);
         setLocation(400,150);
         

@@ -22,7 +22,7 @@ public class UpdateInformation extends JFrame implements ActionListener{
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
         
-        JLabel title = new JLabel("UPDATE CUSTOMER INFORMATION");
+        JLabel title = new JLabel("UPDATE CONSUMER INFORMATION");
         title.setBounds(110, 0, 400, 30);
         title.setFont(new Font("Tahoma", Font.PLAIN, 20));
         add(title);

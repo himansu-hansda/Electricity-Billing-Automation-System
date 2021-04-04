@@ -32,7 +32,7 @@ public class Project extends JFrame implements ActionListener{
         
         JMenu emp_m = new JMenu("Employee Management");
         JMenuItem e1 = new JMenuItem("New Employee");
-        JMenuItem e2 = new JMenuItem("Update Employee Information");
+        JMenuItem e2 = new JMenuItem("View Employee Information");
         
         e1.setFont(new Font("monospaced",Font.PLAIN,12));
         ImageIcon icon10 = new ImageIcon(ClassLoader.getSystemResource("icon/icon1.png"));
@@ -43,17 +43,28 @@ public class Project extends JFrame implements ActionListener{
         e1.setBackground(Color.WHITE);
         
         e2.setFont(new Font("monospaced",Font.PLAIN,12));
+        ImageIcon icon14 = new ImageIcon(ClassLoader.getSystemResource("icon/icon1.png"));
+        Image image14 = icon14.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
+        e2.setIcon(new ImageIcon(image10));
+        e2.setMnemonic('T');
+        e2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+        e2.setBackground(Color.WHITE);
+        
+        e1.addActionListener(this);
+        e2.addActionListener(this);
+        
+        /*e2.setFont(new Font("monospaced",Font.PLAIN,12));
         ImageIcon icon12 = new ImageIcon(ClassLoader.getSystemResource("icon/icon1.png"));
         Image image12 = icon12.getImage().getScaledInstance(20, 20,Image.SCALE_DEFAULT);
         e2.setIcon(new ImageIcon(image12));
         e2.setMnemonic('F');
         e2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, ActionEvent.CTRL_MASK));
-        e2.setBackground(Color.WHITE);
+        e2.setBackground(Color.WHITE);*/
         
         //For Employee
         
         JMenu consumer_complaints = new JMenu("Report");
-        JMenuItem c1 = new JMenuItem("Customer Complaints");
+        JMenuItem c1 = new JMenuItem("Consumer Complaints");
         
         c1.setFont(new Font("monospaced",Font.PLAIN,12));
         ImageIcon icon13 = new ImageIcon(ClassLoader.getSystemResource("icon/icon12.png"));
@@ -63,6 +74,7 @@ public class Project extends JFrame implements ActionListener{
         c1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
         c1.setBackground(Color.WHITE);
         
+        c1.addActionListener(this);
         
         /* ---- Customer Details ---- */
         m1.setFont(new Font("monospaced",Font.PLAIN,12));
@@ -291,6 +303,8 @@ public class Project extends JFrame implements ActionListener{
          
         if(person.equals("Manager")){
             mb.add(emp_m);
+            mb.add(master);
+            mb.add(consumer_complaints);
         }else if(person.equals("Employee"))
         {
             mb.add(master);
@@ -350,6 +364,14 @@ public class Project extends JFrame implements ActionListener{
             new UpdateInformation(meter).setVisible(true);
         }else if(msg.equals("Bill Details")){
             new BillDetails(meter).setVisible(true);
+        }else if(msg.equals("File Complaint")){
+            new EnterConsumerComplaints().setVisible(true);
+        }else if(msg.equals("Consumer Complaints")){
+            new ViewConsumerComplaints().setVisible(true);
+        }else if(msg.equals("New Employee")){
+            new NewEmployee().setVisible(true);
+        }else if(msg.equals("View Employee Information")){
+            new ViewEmployeeDetails().setVisible(true);
         }
         
         
