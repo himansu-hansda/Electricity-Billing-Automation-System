@@ -10,11 +10,11 @@ public class Project extends JFrame implements ActionListener{
         super("Electricity Billing System");
         this.meter = meter;
         
-        setSize(1920,1030);
+        setSize(1100,720);
         
         /* Adding background image */
-        ImageIcon ic =  new ImageIcon(ClassLoader.getSystemResource("icon/elect1.jpg"));
-        Image i3 = ic.getImage().getScaledInstance(1900, 950,Image.SCALE_DEFAULT);
+        ImageIcon ic =  new ImageIcon(ClassLoader.getSystemResource("icon/NEW log2o.jpg"));
+        Image i3 = ic.getImage().getScaledInstance(1100, 720,Image.SCALE_DEFAULT);
         ImageIcon icc3 = new ImageIcon(i3);
         JLabel l1 = new JLabel(icc3);
         add(l1);

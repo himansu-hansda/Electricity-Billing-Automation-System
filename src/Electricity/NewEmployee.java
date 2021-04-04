@@ -26,12 +26,12 @@ import javax.swing.JTextField;
  */
 
 public class NewEmployee extends JFrame implements ActionListener{
-    JLabel l1,l2,l3,l4,l5,l6,l7,l8,l12;//l13;
-    JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9;
+    JLabel l1,l2,l3,l4,l5,l6,l7,l8,l12,l13,l14;
+    JTextField t1,t2,t3,t4,t5,t6,t7,t8,t9,t10;
     JButton b1,b2;
     NewEmployee(){
         setLocation(600,200);
-        setSize(700,500);
+        setSize(700,560);
         
         JPanel p = new JPanel();
         p.setLayout(null);
@@ -59,13 +59,21 @@ public class NewEmployee extends JFrame implements ActionListener{
         p.add(l12);
         p.add(t8);
         
-        /*l13 = new JLabel("Password");
+        l13 = new JLabel("Username");
         l13.setBounds(100, 160, 100, 20);
         
         t9 = new JTextField();
         t9.setBounds(240, 160, 200, 20);
         p.add(l13);
-        p.add(t9);*/
+        p.add(t9);
+        
+        l14 = new JLabel("Password");
+        l14.setBounds(100, 200, 100, 20);
+        
+        t10 = new JTextField();
+        t10.setBounds(240, 200, 200, 20);
+        p.add(l14);
+        p.add(t10);
        
         /*l2 = new JLabel("Salary in Rs.");
         l2.setBounds(100, 120, 100, 20);
@@ -74,41 +82,41 @@ public class NewEmployee extends JFrame implements ActionListener{
         p.add(l2);
         p.add(l11);*/
         l3 = new JLabel("Address");
-        l3.setBounds(100, 160, 100, 20);
+        l3.setBounds(100, 240, 100, 20);
         t3 = new JTextField();
-        t3.setBounds(240, 160, 200, 20);
+        t3.setBounds(240, 240, 200, 20);
         p.add(l3);
         p.add(t3);
         l5 = new JLabel("City");
-        l5.setBounds(100, 200, 100, 20);
+        l5.setBounds(100, 280, 100, 20);
         t5 = new JTextField();
-        t5.setBounds(240, 200, 200, 20);
+        t5.setBounds(240, 280, 200, 20);
         p.add(l5);
         p.add(t5);
         l4 = new JLabel("State");
-        l4.setBounds(100, 240, 100, 20);
+        l4.setBounds(100, 320, 100, 20);
         t4 = new JTextField();
-        t4.setBounds(240, 240, 200, 20);
+        t4.setBounds(240, 320, 200, 20);
         p.add(l4);
         p.add(t4);
         
         l6 = new JLabel("Email");
-        l6.setBounds(100, 280, 100, 20);
+        l6.setBounds(100, 360, 100, 20);
         t6 = new JTextField();
-        t6.setBounds(240, 280, 200, 20);
+        t6.setBounds(240, 360, 200, 20);
         p.add(l6);
         p.add(t6);
         l7 = new JLabel("Phone Number");
-        l7.setBounds(100, 320, 100, 20);
+        l7.setBounds(100, 400, 100, 20);
         t7 = new JTextField();
-        t7.setBounds(240, 320, 200, 20);
+        t7.setBounds(240, 400, 200, 20);
         p.add(l7);
         p.add(t7);
         
         b1 = new JButton("Next");
-        b1.setBounds(120, 390, 100, 25);
+        b1.setBounds(120, 470, 100, 25);
         b2 = new JButton("Cancel");
-        b2.setBounds(250, 390, 100, 25);
+        b2.setBounds(250, 470, 100, 25);
         
         b1.setBackground(Color.BLACK);
         b1.setForeground(Color.WHITE);
@@ -149,15 +157,15 @@ public class NewEmployee extends JFrame implements ActionListener{
             String city = t5.getText();
             String email = t6.getText();
             String phone = t7.getText();
-            //String username = t8.getText();
-            //String password = t9.getText();
+            String username = t8.getText();
+            String password = t9.getText();
 
             String q1 = "insert into employee values('"+name+"','"+salary+"','"+address+"','"+city+"','"+state+"','"+email+"','"+phone+"')";
-            //String q2 = "insert into login values('"+meter+"', '', '', '', '')";
+            String q2 = "insert into login values('','"+username+"','"+name+"','"+password+"','Employee')";
             try{
                 Conn c1 = new Conn();
                 c1.s.executeUpdate(q1);
-                //c1.s.executeUpdate(q2);
+                c1.s.executeUpdate(q2);
                 JOptionPane.showMessageDialog(null,"Employee Details Added Successfully");
                 this.setVisible(false);
                 //new MeterInfo(meter).setVisible(true);
